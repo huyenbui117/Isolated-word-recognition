@@ -20,5 +20,5 @@ async def main(file: UploadFile = File(media_type='multipart', default='Any')):
     file_received = "inference.wav"
     with open(file_received, "wb") as file_object:
         file_object.write(file.file.read())
-    pred = f"This is {predict(file_received)} sound."
+    pred = predict(file_received)
     return pred
