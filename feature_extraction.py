@@ -21,18 +21,25 @@ def feature_extraction(data_dir:str, output_path):
         files = os.listdir(path)
         features=[]
         for file in files:
+            # print(f"{file}, {label}")
             feature = mfcc_extraction(f"{path}/{file}")
             features.append([feature,file[:-4]])
         pickle.dump(features, open(f"{output_path}/{label}.sav", "wb"))
     print(f"Extracted features from {data_dir}. Saved in {path}.sav")
-        
+def load_features(path_to_feature:str):
+    files = os.listdir(path_to_feature)
+    features = dict()
+    for file in files:
+        _path = f"{path_to_feature}/{file}"
+        features[f"{file[:-4]}"]=pickle.load(open(_path,"rb"))
+    return features       
 def main():
     LABELS.remove("sil")
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--data_dir", type=str,
         nargs = "?",
-        default = "data",
+        default = "data/combined",
         help="Path to dataset"
     )
     parser.add_argument(
@@ -44,7 +51,7 @@ def main():
     parser.add_argument(
         "output_dir", type=str,
         nargs = "?",
-        default = "feature",
+        default = "feature/combined",
         help = "Path to folder containing extracted features"
     )
     parser.add_argument(
@@ -73,7 +80,7 @@ def main():
                 os.mkdir(output_path)
             feature_extraction(input_path, output_path)
     else:
-        feature_extraction(data_dir, output_dir)
+        feature_extraction(args.data_dir, args.output_dir)
         
 if __name__ == '__main__':
     main()

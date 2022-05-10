@@ -6,4 +6,5 @@ DATA_PATH = ['19020063_CaoDinhHoangMinh',
  '19021260_LeTruongGiang',
  '19021299_Nguyễn Đức Huy',
  '19021307_BuiKhanhHuyen']
+SAMPLE_COUNT = 5
 # IPython.embed()
