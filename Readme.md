@@ -6,11 +6,10 @@ Isolated word recognition using Dynamic Time Warping and Hidden Markov model
 
 ## Features
 
-- Preprocess raw dataset by segmentation using preprocess.py
-- Extract features (mfcc, $$\Delta_{mfcc}, \Delta \Delta_{mfcc}^{}$$) using feature_extraction.py
-
-- Predict isolated word by dtw using dtw.py
-- Predict isolated word by hmm using hmm_model.py
+- Preprocess raw dataset by segmentation using preprocess.py (--output_dir, --overwrite, --choose_data)
+- Extract features (mfcc, $$\Delta_{mfcc}, \Delta \Delta_{mfcc}^{}$$) using feature_extraction.py (--data_dir, --multiple_dataset, --output_dir, --overwrite)
+- Predict isolated word by dtw using dtw.py (--path_to_feature, --path_to_template)
+- Predict isolated word by hmm using hmm_model.py (--do_train, --do_evaluate)
 - Predict your own word using api provided by inference.py
 
 ## Installation
