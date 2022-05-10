@@ -30,13 +30,13 @@ def main():
     LABELS.remove('sil')
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "path_to_feature", type=str,
+        "--path_to_feature", type=str,
         default= "feature",
         nargs="?", 
         help= "Path to feature directory, containing *.sav files"
     )
     parser.add_argument(
-        "path_to_template", type=str,
+        "--path_to_template", type=str,
         default= "templates.tpl",
         nargs="?", 
         help= "Path to template file *.tpl"
