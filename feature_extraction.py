@@ -49,7 +49,7 @@ def main():
         help =  "Set to true to extract multiple dataset in the same data_dir"
     )
     parser.add_argument(
-        "output_dir", type=str,
+        "--output_dir", type=str,
         nargs = "?",
         default = "feature",
         help = "Path to folder containing extracted features"
