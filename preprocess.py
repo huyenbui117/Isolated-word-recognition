@@ -60,7 +60,7 @@ def main():
     parser.add_argument(
         "--choose_data", type = int,choices=[0,1,2,3,4,5],
         nargs="?",
-        default = 4,
+        default = 0,
         help = "Choose dataset to preprocess. 4 to preprocess all separatedly, 5 to combine all"
     )
     args = parser.parse_args()

@@ -39,7 +39,7 @@ def main():
     parser.add_argument(
         "--data_dir", type=str,
         nargs = "?",
-        default = "data/combined",
+        default = "data/19020063_CaoDinhHoangMinh",
         help="Path to dataset"
     )
     parser.add_argument(
@@ -51,7 +51,7 @@ def main():
     parser.add_argument(
         "output_dir", type=str,
         nargs = "?",
-        default = "feature/combined",
+        default = "feature",
         help = "Path to folder containing extracted features"
     )
     parser.add_argument(

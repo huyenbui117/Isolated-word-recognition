@@ -17,7 +17,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "path_to_feature", type=str,
-        default= "feature/combined",
+        default= "feature",
         nargs="?", 
         help= "Path to feature directory, containing *.sav files"
     )
