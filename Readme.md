@@ -21,6 +21,16 @@ Isolated word recognition using Dynamic Time Warping and Hidden Markov model
 git clone https://github.com/huyenbui117/SP.git
 pip install  -r requirements.txt
 ```
+## Evaluate
+```shell
+py dtw.py
+```
+![dtw](https://github.com/huyenbui117/SP/blob/master/gifs/dtw.gif)
+```shell
+py hmm_model.py
+```
+![dtw](https://github.com/huyenbui117/SP/blob/master/gifs/hmm_model.png)
+## Inference
 - Start the server:
 
 ```shell
