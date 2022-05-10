@@ -2,6 +2,7 @@
  _19021307 Bui Khanh Huyen_
  
 [![Python Version](https://img.shields.io/badge/Python-3.9-blue.svg)](https://www.python.org/) [![Python Version](https://img.shields.io/badge/FastAPI-0.75.0-blue.svg)](https://fastapi.tiangolo.com/)
+
 Isolated word recognition using Dynamic Time Warping and Hidden Markov model
 
 ## Features
