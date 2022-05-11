@@ -8,7 +8,7 @@ import pickle
 from common import *
 def data_preparation():
     idx_labels = dict()
-    data = load_features("feature")
+    data = load_features("feature_1")
     for label in LABELS:
         for i,d in enumerate(data[label]):
             data[label][i]=np.array(data[label][i][0]).T
@@ -32,8 +32,18 @@ def data_preparation():
 def train(X, y):
     models= dict()
     for i, label in enumerate(LABELS):
-        models[label] = hmm.GMMHMM(n_components=STATES[i], covariance_type="diag", n_iter=300)
+        
+        _transmat = np.tril(np.triu(np.abs(np.ones((STATES[i], STATES[i]))), 0), k=2)
+        print(f"Before: {_transmat}\n {np.sum(_transmat,axis =1)}")
+        _transmat/=np.sum(_transmat,axis=1)[:,np.newaxis]
+        models[label] = hmm.GMMHMM(n_components=STATES[i], covariance_type="diag", n_iter=300, n_mix = 3, verbose= True,
+            transmat_prior = _transmat,
+            # weights_prior = np.ones(3)/3,
+            init_params="smcw"
+        )
+        models[label].transmat_=_transmat
         models[label].fit(X=np.vstack(X['train'][label]), lengths=[x.shape[0] for x in X['train'][label]])
+        print(f"After: {models[label].transmat_}")
     save_model(models)
     return models
 def evaluate(X, y, models):

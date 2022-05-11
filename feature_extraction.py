@@ -13,7 +13,13 @@ def mfcc_extraction(file_path:str):
     )
     delta_mfcc = librosa.feature.delta(mfcc)
     delta2_mfcc = librosa.feature.delta(mfcc, order = 2)
-    return np.concatenate((mfcc, delta_mfcc, delta2_mfcc))
+    feature = np.concatenate((mfcc, delta_mfcc, delta2_mfcc))
+    mean_ =np.mean(feature, axis=1)[:, np.newaxis]
+    std_ =np.std(feature, axis=1)[:, np.newaxis]
+    feature = (feature - mean_)/std_
+
+    print(feature.shape)
+    return feature
 def feature_extraction(data_dir:str, output_path):
     
     for label in LABELS:
@@ -22,8 +28,11 @@ def feature_extraction(data_dir:str, output_path):
         features=[]
         for file in files:
             # print(f"{file}, {label}")
-            feature = mfcc_extraction(f"{path}/{file}")
-            features.append([feature,file[:-4]])
+            try:
+                feature = mfcc_extraction(f"{path}/{file}")
+                features.append([feature,file[:-4]])
+            except librosa.util.exceptions.ParameterError as err:
+                print(f"{file}, {label}")
         pickle.dump(features, open(f"{output_path}/{label}.sav", "wb"))
     print(f"Extracted features from {data_dir}. Saved in {path}.sav")
 def load_features(path_to_feature:str):

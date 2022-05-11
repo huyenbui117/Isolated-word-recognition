@@ -7,5 +7,5 @@ DATA_PATH = ['19020063_CaoDinhHoangMinh',
  '19021299_Nguyễn Đức Huy',
  '19021307_BuiKhanhHuyen']
 SAMPLE_COUNT = 5
-STATES = [3, 6, 3, 3, 3, 3, 3, 3, 1]
+STATES = [3, 7, 3, 3, 3, 3, 3, 3, 1]
 # IPython.embed()
